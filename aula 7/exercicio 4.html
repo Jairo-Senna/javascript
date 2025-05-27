@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f0f0f0;
+        }
+
+        a#meuLink {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #0d47a1;
+            font-size: 18px;
+            padding: 10px 15px;
+            border: 2px dashed #90caf9;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a#meuLink:hover {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <a id="meuLink">Clique aqui para saber mais</a>
+    <br><br>
+    <button onclick="definirLink()">Definir Link</button>
+
+<script>
+    function definirLink() {
+        const link = document.getElementById("meuLink");
+        link.href = "#"; 
+        link.target = "_blank";
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            transition: background-color 0.3s, color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: #f0f0f0;
+            color: #222;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .escuro {
+            background-color: #1e1e1e;
+            color: #f9f9f9;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Exercício de Tema</h1>
+        <p>Este é um exemplo de página onde você pode alternar entre o tema claro e escuro.</p>
+
+        <ul>
+            <li>Item 1: Aprender HTML</li>
+            <li>Item 2: Estilizar com CSS</li>
+            <li>Item 3: Interagir com JavaScript</li>
+        </ul>
+
+        <button onclick="alternarTema()">Alternar Tema</button>
+    </div>
+
+    <script>
+    function alternarTema() {
+        const container = document.querySelector(".container");
+        container.classList.toggle("escuro");
+    }
+</script>
+
+</body>
+</html>

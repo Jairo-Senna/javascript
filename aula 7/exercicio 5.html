@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f9f9f9;
+        }
+
+        #texto {
+            font-size: 1.2rem;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s, font-weight 0.3s;
+        }
+
+        .destaque {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 1rem;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="texto">Use o botão para alternar o destaque do texto.</p>
+    <button onclick="alternarDestaque()">Alternar Destaque</button>
+
+    <script>
+        function alternarDestaque() {
+            const paragrafo = document.getElementById("texto");
+            paragrafo.classList.toggle("destaque");
+        }
+    </script>
+</body>
+</html>
