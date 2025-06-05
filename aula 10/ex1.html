@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Seção de Comentários</title>
+    <style>
+    body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        box-sizing: border-box;
+        resize: none;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    .comentario {
+        background-color: #f1f1f1;
+        padding: 12px;
+        border-radius: 5px;
+        margin-top: 15px;
+        text-align: left;
+        position: relative;
+    }
+
+    .autor {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+
+    .texto-comentario {
+        font-size: 15px;
+        color: #444;
+        margin-bottom: 6px;
+        line-height: 1.4;
+    }
+
+    .data {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 8px;
+    }
+
+    .remover {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 8px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .remover:hover {
+        background-color: #bd2130;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>Deixe seu comentário</h2>
+    <input type="text" id="inputNome" placeholder="Digite seu nome" />
+    <textarea id="inputComentario" rows="4" placeholder="Digite seu comentário..."></textarea>
+    <br />
+    <button id="btn-adicionar-comentario">Publicar</button>
+
+    <div id="secaoComentarios"></div>
+    </div>
+
+    <script>
+    const btnAdicionar = document.getElementById('btn-adicionar-comentario');
+    const inputNome = document.getElementById('inputNome');
+    const inputComentario = document.getElementById('inputComentario');
+    const secaoComentarios = document.getElementById('secaoComentarios');
+
+    btnAdicionar.addEventListener('click', () => {
+        const nome = inputNome.value.trim();
+        const texto = inputComentario.value.trim();
+
+        if (!nome || !texto) {
+        alert('Por favor, preencha ambos os campos.');
+        return;
+        }
+
+        const data = new Date();
+        const dataFormatada = data.toLocaleString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+
+        const divComentario = document.createElement('div');
+        divComentario.classList.add('comentario');
+
+        divComentario.innerHTML = `
+          <h3 class="autor">${nome}</h3>
+          <p class="texto-comentario">${texto}</p>
+          <p class="data">Comentado em: ${dataFormatada}</p>
+          <button class="remover">Remover</button>
+        `;
+
+        divComentario.querySelector('.remover').addEventListener('click', () => {
+          secaoComentarios.removeChild(divComentario);
+        });
+
+        secaoComentarios.insertBefore(divComentario, secaoComentarios.firstChild);
+
+        inputNome.value = '';
+        inputComentario.value = '';
+    });
+    </script>
+</body>
+</html>
