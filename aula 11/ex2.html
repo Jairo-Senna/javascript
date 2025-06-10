@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meus Filmes Assistidos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin-left: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 30px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .remover {
+      background-color: #e74c3c;
+    }
+
+    .remover:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Meus Filmes Assistidos</h2>
+
+  <input type="text" id="inputFilme" placeholder="Digite o nome do filme" />
+  <button id="btnAdicionar">Adicionar</button>
+
+  <ul id="listaFilmes"></ul>
+
+  <script>
+    const inputFilme = document.getElementById("inputFilme");
+    const btnAdicionar = document.getElementById("btnAdicionar");
+    const listaFilmes = document.getElementById("listaFilmes");
+
+    function carregarFilmes() {
+      const filmes = JSON.parse(localStorage.getItem("filmesAssistidos")) || [];
+
+      listaFilmes.innerHTML = "";
+
+      filmes.forEach((filme, indice) => {
+        const li = document.createElement("li");
+
+        const textoFilme = document.createElement("span");
+        textoFilme.textContent = filme;
+
+        const btnRemover = document.createElement("button");
+        btnRemover.textContent = "Remover";
+        btnRemover.classList.add("remover");
+        btnRemover.onclick = () => {
+          removerFilme(indice); 
+        };
+
+        li.appendChild(textoFilme);
+        li.appendChild(btnRemover);
+
+        listaFilmes.appendChild(li);
+      });
+    }
+
+    function adicionarFilme() {
+      const nomeFilme = inputFilme.value.trim();
+
+      if (nomeFilme === "") {
+        alert("Por favor, digite o nome de um filme.");
+        return;
+      }
+
+      let filmes = JSON.parse(localStorage.getItem("filmesAssistidos")) || [];
+
+
+      filmes.push(nomeFilme);
+
+      localStorage.setItem("filmesAssistidos", JSON.stringify(filmes));
+
+      inputFilme.value = "";
+
+      carregarFilmes();
+    }
+
+    function removerFilme(indice) {
+      let filmes = JSON.parse(localStorage.getItem("filmesAssistidos")) || [];
+
+      filmes.splice(indice, 1);
+
+      localStorage.setItem("filmesAssistidos", JSON.stringify(filmes));
+
+      carregarFilmes();
+    }
+
+    btnAdicionar.addEventListener("click", adicionarFilme);
+
+    window.addEventListener("load", carregarFilmes);
+  </script>
+</body>
+</html>
