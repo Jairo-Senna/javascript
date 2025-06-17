@@ -1,0 +1,73 @@
+.container {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .dado {
+    text-align: center;
+    display: inline-block;
+  
+  }
+  
+  body {
+    background-color: #393E46;
+  }
+  
+  h1 {
+    margin: 30px;
+    font-family: 'Lobster', cursive;
+    text-shadow: 5px 0 #232931;
+    font-size: 8rem;
+    color: #4ECCA3;
+  }
+  
+  p {
+    font-size: 2rem;
+    color: #4ECCA3;
+    font-family: 'Indie Flower', cursive;
+  }
+  
+  img {
+    width: 80%;
+  }
+  
+  footer {
+    margin-top: 5%;
+    color: #EEEEEE;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+  
+  }
+  /* Estilização do Botão de Sorteio */
+.meuBotao {
+  /* Aumenta o tamanho do texto dentro do botão */
+  font-size: 1.5rem; 
+
+  /* Define a cor de fundo do botão (o mesmo verde do título) */
+  background-color: #4ECCA3;
+
+  /* Define a cor do texto do botão */
+  color: #EEEEEE;
+
+  /* Adiciona um espaçamento interno para o botão ficar maior */
+  padding: 15px 30px;
+
+  /* Remove a borda padrão do navegador */
+  border: none;
+
+  /* Deixa os cantos do botão arredondados */
+  border-radius: 15px;
+
+  /* Muda o cursor para uma "mãozinha" ao passar o mouse */
+  cursor: pointer;
+
+  /* Usa a mesma fonte dos parágrafos para combinar */
+  font-family: 'Indie Flower', cursive;
+}
+
+/* Efeito ao passar o mouse por cima do botão */
+.meuBotao:hover {
+  /* Deixa o botão um pouco mais escuro para dar feedback visual */
+  background-color: #34886e;
+}
