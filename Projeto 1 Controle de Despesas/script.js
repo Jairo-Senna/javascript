@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser completamente carregado
+document.addEventListener('DOMContentLoaded', () => {
     // seleciona os elementos do HTML
     const expenseForm = document.getElementById('expense-form');
     const expenseIdInput = document.getElementById('expense-id');
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
                 expensesList.appendChild(card);
             });
         }
-       
+
         updateTotal();
     }
-    
+
     function updateTotal() {
         const total = expenses.reduce((sum, expense) => sum + expense.amount, 0); // soma os valores de todas as despesas no array expenses original
         totalAmountSpan.textContent = formatCurrency(total);
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
         }
 
         const id = expenseIdInput.value;    // pega o ID do campo oculto
-        
+
         const newExpense = {
             id: id ? id : new Date().getTime().toString(), // se não houver ID, cria um novo com base no tempo atual. Senão, usa o ID existente.
             description: descriptionInput.value,
@@ -110,14 +110,15 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
                 expenses[index] = newExpense;
             }
         } else {
-            expenses.unshift(newExpense); // adiçao, adiciona a nova despesa ao início do array
+            expenses.unshift(newExpense); // adição, adiciona a nova despesa ao início do array
         }
 
         saveExpensesToLocalStorage(expenses);
         renderExpenses();
         resetForm();
     }
-// funçõesr no escopo global para serem chamadas pelo onclick nos botões
+
+    // funções no escopo global para serem chamadas pelo onclick nos botões
     window.editExpense = function(id) {
         const expenseToEdit = expenses.find(expense => expense.id === id);
         if (expenseToEdit) {
@@ -133,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
             window.scrollTo(0, 0); // rola a página para o topo, para o formulário ficar visível
         }
     }
+
     window.deleteExpense = function(id) {
         if (confirm('Tem certeza de que deseja excluir esta despesa?')) {
             expenses = expenses.filter(expense => expense.id !== id);   // filtra o array, mantendo apenas as despesas com ID diferente do que foi passado
@@ -140,15 +142,12 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
             renderExpenses(); // renderiza a lista e o total novamente
         }
     }
+
     // adiciona escutadores de eventos aos elementos para responder às ações do usuário
     expenseForm.addEventListener('submit', handleFormSubmit);  // escutador para o envio do formulário
     filterCategory.addEventListener('change', renderExpenses);  // escutadores para os filtros, que re-renderizam a lista quando seus valores mudam
     filterMonth.addEventListener('change', renderExpenses);
-    
-    renderExpenses(); // chama a função de renderização pela primeira vez para exibir as despesas salvas
-});
-    
-    // --- INICIALIZAÇÃO ---
+
     // Chama a função de renderização pela primeira vez para exibir as despesas salvas
     renderExpenses();
 });
