@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eaf2f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+#city-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#search-button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #2980b9;
+}
+
+.feedback {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+}
+.feedback.loading {
+    color: #2980b9;
+}
+.feedback.error {
+    color: #e74c3c;
+    background-color: #fadbd8;
+}
+
+#weather-display {
+    margin-top: 1.5rem;
+}
+
+.weather-card {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.weather-card img {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.weather-card .weather-description {
+    font-size: 1.2rem;
+    font-style: italic;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.weather-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
