@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser completamente carregado
-
     // seleciona os elementos do HTML
     const expenseForm = document.getElementById('expense-form');
     const expenseIdInput = document.getElementById('expense-id');
@@ -134,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
             window.scrollTo(0, 0); // rola a página para o topo, para o formulário ficar visível
         }
     }
-
     window.deleteExpense = function(id) {
         if (confirm('Tem certeza de que deseja excluir esta despesa?')) {
             expenses = expenses.filter(expense => expense.id !== id);   // filtra o array, mantendo apenas as despesas com ID diferente do que foi passado
@@ -142,8 +140,7 @@ document.addEventListener('DOMContentLoaded', () => { // aguarda o DOM ser compl
             renderExpenses(); // renderiza a lista e o total novamente
         }
     }
-
-    // adiciona "escutadores" de eventos aos elementos para responder às ações do usuário
+    // adiciona escutadores de eventos aos elementos para responder às ações do usuário
     expenseForm.addEventListener('submit', handleFormSubmit);  // escutador para o envio do formulário
     filterCategory.addEventListener('change', renderExpenses);  // escutadores para os filtros, que re-renderizam a lista quando seus valores mudam
     filterMonth.addEventListener('change', renderExpenses);
